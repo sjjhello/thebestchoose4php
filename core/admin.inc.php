@@ -23,7 +23,7 @@ function checkLogined(){
  */
 function addAdmin(){
     $arr = $_POST;
-    if(insert("imooc_admin", $arr)){
+    if(insert("bs_admin", $arr)){
         $mes = "添加成功！<br><a href='addAdmin.php'>继续添加</a>|<a href='listAdmin.php'>查看管理员</a>";
     }else{
         $mes = "添加失败！<br><a href='addAdmin.php'>重新添加</a>";

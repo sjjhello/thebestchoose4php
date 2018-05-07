@@ -6,7 +6,7 @@ $verify = $_POST['verify'];
 $verify1 = $_SESSION['verify'];
 $autoFlag = $_POST['autoFlag'];
 if($verify==$verify1){
-   $sql = "select * from admin where username='{$username}' and password='{$password}'";
+   $sql = "select * from bs_admin where username='{$username}' and password='{$password}'";
    $res = checkAdmin($sql);
    if($res){
        if($autoFlag){

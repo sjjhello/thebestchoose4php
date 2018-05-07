@@ -4,7 +4,7 @@
 	$password = $_POST['password'];
 	if($password){
 		if($username){
-			$sql = "select * from user where username='{$username}' and password='{$password}'";
+			$sql = "select * from bs_user where username='{$username}' and password='{$password}'";
 			$res = checkUser($sql);    
     		if($res){
         		$_SESSION['userName']=$res['username'];

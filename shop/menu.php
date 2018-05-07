@@ -1,4 +1,8 @@
-
+<?php
+    require_once '../include.php';
+    $sql = "select id,cName from bs_category order by id asc";
+    $rows = fetchAll($sql);
+?>
 <div class="mainmenu-area">
     <div class="container">
         <div class="row">
@@ -14,7 +18,9 @@
                 <ul class="nav navbar-nav">
                     <li><a href="./index.php">主页</a></li>
                     <li><a href="./productList.php">全部商品</a></li>
-                    <li><a href="#">分类1</a></li>
+                        <?php foreach ($rows as $row):?>
+                            <li><a href="productListById.php?id=<?php echo $row['id']?>"><?php echo $row['cName'];?></a></li>
+                        <?php endforeach;?>
                     <li><a href="./cartList.php">购物车</a></li>
                 </ul>
             </div>

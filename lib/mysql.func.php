@@ -5,7 +5,7 @@
  */
 function connet() {
     try {        
-        $link = new PDO ( "mysql:host=localhost;dbname=dbshop", DB_USER, DB_PWD );
+        $link = new PDO ( "mysql:host=localhost;dbname=thebestshop", DB_USER, DB_PWD );
         $link->setAttribute ( PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION );
 //         $link->exec ( "set names" . DB_CHARSET );
     } catch ( PDOException $e ) {

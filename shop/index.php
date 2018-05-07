@@ -1,4 +1,11 @@
-<html xmlns:th="http://www.thymeleaf.org">
+<?php
+require_once '../include.php';
+checkUserLogin();
+$sql = "select id,pTitle,pic_url,bPrice,nPrice from bs_pro limit 8";
+$pros = fetchAll($sql);
+// print_r($pros);
+?>
+<html>
 <head>
 <!DOCTYPE html>
     <meta charset="utf-8">
@@ -163,31 +170,33 @@ include 'menu.php';
                 <div class="latest-product">
                     <h2 class="section-title">火热商品</h2>
                     <div class="product-carousel">
+                        <?php foreach($pros as $pro): ?>
                         <div class="single-product">
                             <div class="product-f-image">
-                                <img src="../style/img/product-1.jpg" alt="">
+                                <img src="<?php echo $pro['pic_url'] ?>" alt="">
                                 <div class="product-hover">
                                     <a href="#" class="add-to-cart-link"><i class="fa fa-shopping-cart"></i> Add to cart</a>
-                                    <a href="/shop/productDetail.html" class="view-details-link"><i class="fa fa-link"></i> See details</a>
+                                    <a href="productDetail.php?id=<?php echo $pro['id'];?>" class="view-details-link"><i class="fa fa-link"></i> See details</a>
                                 </div>
                             </div>
 
-                            <h2><a href="/shop/productDetail.html">Sony Smart TV - 2015</a></h2>
+                            <h2><a href="./productDetail.php"><?php echo $pro['pTitle']; ?></a></h2>
 
                             <div class="product-carousel-price">
-                                <ins>$700.00</ins> <del>$800.00</del>
+                                <ins>¥<?php echo $pro['nPrice'];?></ins> <del>¥<?php echo $pro['bPrice'];?></del>
                             </div>
                         </div>
-                        <div class="single-product">
+                    <?php endforeach;?>
+                        <!-- <div class="single-product">
                             <div class="product-f-image">
                                 <img src="../style/img/product-2.jpg" alt="">
                                 <div class="product-hover">
                                     <a href="#" class="add-to-cart-link"><i class="fa fa-shopping-cart"></i> Add to cart</a>
-                                    <a href="/shop/productDetail.html" class="view-details-link"><i class="fa fa-link"></i> See details</a>
+                                    <a href="./productDetail.php" class="view-details-link"><i class="fa fa-link"></i> See details</a>
                                 </div>
                             </div>
 
-                            <h2><a href="/shop/productDetail.html">Apple new mac book 2015 March :P</a></h2>
+                            <h2><a href="./productDetail.php">Apple new mac book 2015 March :P</a></h2>
                             <div class="product-carousel-price">
                                 <ins>$899.00</ins> <del>$999.00</del>
                             </div>
@@ -197,7 +206,7 @@ include 'menu.php';
                                 <img src="../style/img/product-3.jpg" alt="">
                                 <div class="product-hover">
                                     <a href="#" class="add-to-cart-link"><i class="fa fa-shopping-cart"></i> Add to cart</a>
-                                    <a href="/shop/productDetail.html" class="view-details-link"><i class="fa fa-link"></i> See details</a>
+                                    <a href="./productDetail.php" class="view-details-link"><i class="fa fa-link"></i> See details</a>
                                 </div>
                             </div>
 
@@ -212,11 +221,11 @@ include 'menu.php';
                                 <img src="../style/img/product-4.jpg" alt="">
                                 <div class="product-hover">
                                     <a href="#" class="add-to-cart-link"><i class="fa fa-shopping-cart"></i> Add to cart</a>
-                                    <a href="/shop/productDetail.html" class="view-details-link"><i class="fa fa-link"></i> See details</a>
+                                    <a href="./productDetail.php" class="view-details-link"><i class="fa fa-link"></i> See details</a>
                                 </div>
                             </div>
 
-                            <h2><a href="/shop/productDetail.html">Sony playstation microsoft</a></h2>
+                            <h2><a href="./productDetail.php">Sony playstation microsoft</a></h2>
 
                             <div class="product-carousel-price">
                                 <ins>$200.00</ins> <del>$225.00</del>
@@ -227,11 +236,11 @@ include 'menu.php';
                                 <img src="../style/img/product-5.jpg" alt="">
                                 <div class="product-hover">
                                     <a href="#" class="add-to-cart-link"><i class="fa fa-shopping-cart"></i> Add to cart</a>
-                                    <a href="/shop/productDetail.html" class="view-details-link"><i class="fa fa-link"></i> See details</a>
+                                    <a href="./productDetail.html" class="view-details-link"><i class="fa fa-link"></i> See details</a>
                                 </div>
                             </div>
 
-                            <h2><a href="/shop/productDetail.html">Sony Smart Air Condtion</a></h2>
+                            <h2><a href="./productDetail.php">Sony Smart Air Condtion</a></h2>
 
                             <div class="product-carousel-price">
                                 <ins>$1200.00</ins> <del>$1355.00</del>
@@ -242,17 +251,17 @@ include 'menu.php';
                                 <img src="../style/img/product-6.jpg" alt="">
                                 <div class="product-hover">
                                     <a href="#" class="add-to-cart-link"><i class="fa fa-shopping-cart"></i> Add to cart</a>
-                                    <a href="/shop/productDetail.html" class="view-details-link"><i class="fa fa-link"></i> See details</a>
+                                    <a href="./productDetail.php" class="view-details-link"><i class="fa fa-link"></i> See details</a>
                                 </div>
                             </div>
 
-                            <h2><a href="/shop/productDetail.html">Samsung gallaxy note 4</a></h2>
+                            <h2><a href="./productDetail.php">Samsung gallaxy note 4</a></h2>
 
                             <div class="product-carousel-price">
                                 <ins>$400.00</ins>
                             </div>
-                        </div>
-                    </div>
+                        </div>-->
+                    </div> 
                 </div>
             </div>
         </div>

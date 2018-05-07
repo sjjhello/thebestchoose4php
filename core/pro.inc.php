@@ -106,15 +106,15 @@ function getAllProByAdmin()
  * @param unknown $id            
  * @return mixed
  */
-function getAllImgByProId($id)
+/*function getAllImgByProId($id)
 {
     $sql = "select a.albumPath from imooc_album as a where pid={$id}";
     $rows = fetchAll($sql);
     return $rows;
-}
+}*/
 
 function getAllPros(){
-    $sql = "select p.id,p.pName,p.pSn,p.pNum,p.mPrice,p.iPrice,p.pDesc,p.pubTime,p.isShow,p.isHot,c.cName,p.cId from imooc_pro as p join imooc_cate c on p.cId=c.id";
+    $sql = "select p.id,p.pName,p.pTitle,p.pUrl,p.bPrice,p.nPrice,p.isShow,p.address,c.cName from bs_pro as p join bs_category c on p.cId=c.id";
     $rows = fetchAll($sql);
     return $rows;
 }
@@ -124,7 +124,7 @@ function getAllPros(){
  * @return mixed
  */
 function getProsByCid($cid){
-    $sql = "select p.id,p.pName,p.pSn,p.pNum,p.mPrice,p.iPrice,p.pDesc,p.pubTime,p.isShow,p.isHot,c.cName,p.cId from imooc_pro as p join imooc_cate c on p.cId=c.id where p.cId={$cid} limit 4";
+    $sql = "select p.id,p.pName,p.pTitle,p.pUrl,p.bPrice,p.nPrice,p.isShow,p.address,c.cName from bs_pro as p join bs_category c on p.cId=c.id where p.cId={$cid} limit 4";
     $rows = fetchAll($sql);
     return $rows;
 }
@@ -134,7 +134,7 @@ function getProsByCid($cid){
  * @return array
  */
 function getSmallProsByCid($cid){
-    $sql = "select p.id,p.pName,p.pSn,p.pNum,p.mPrice,p.iPrice,p.pDesc,p.pubTime,p.isShow,p.isHot,c.cName,p.cId from imooc_pro as p join imooc_cate c on p.cId=c.id where p.cId={$cid} limit 4,4";
+    $sql = "select p.id,p.pName,p.pTitle,p.pUrl,p.bPrice,p.nPrice,p.isShow,p.address,c.cName from bs_pro as p join bs_category c on p.cId=c.id where p.cId={$cid} limit 4,4";
     $rows = fetchAll($sql);
     return $rows;
 }
@@ -147,7 +147,7 @@ function getSmallProsByCid($cid){
  */
 function getProById($id)
 {
-    $sql = "select p.id,p.pName,p.pSn,p.pNum,p.mPrice,p.iPrice,p.pDesc,p.pubTime,p.isShow,p.isHot,c.cName,p.cId from imooc_pro as p join imooc_cate c on p.cId=c.id where p.id={$id}";
+    $sql = "select id,pName,pTitle,pUrl,bPrice,nPrice,isShow,address,pic_url from bs_pro where id={$id}";
     $row = fetchOne($sql);
     return $row;
 }
@@ -157,7 +157,7 @@ function getProById($id)
  * @return array
  */
 function checkProExist($cid){
-    $sql = "select * from imooc_pro where cId={$cid}";
+    $sql = "select * from bs_pro where cId={$cid}";
     $rows = fetchAll($sql);
     return $rows;
 }
@@ -168,8 +168,8 @@ function checkProExist($cid){
  */
 function delPro($id){
     $arr = $_POST;
-    $res = delete("imooc_pro","id={$id}");
-    $proImgs = getAllImgByProId($id);
+    $res = delete("bs_pro","id={$id}");
+    /*$proImgs = getAllImgByProId($id);
     //删除图片
     if($proImgs && is_array($proImgs)){
         foreach ($proImgs as $proImg){
@@ -190,8 +190,8 @@ function delPro($id){
             } 
         }
     }
-    $res1 = delete("imooc_album","pid={$id}");
-    if($res && $res1){
+    $res1 = delete("imooc_album","pid={$id}");*/
+    if($res){
         $mes = "删除成功!|<a href='listPro.php'>查看分类列表</a>";
     }else {
         $mes = "删除失败!|<a href='listPro.php'>请重新删除</a>";
@@ -203,7 +203,7 @@ function delPro($id){
  * @return mixed
  */
 function getProInfo(){
-    $sql = "select id,pName from imooc_pro order by id asc";
+    $sql = "select id,pName from bs_pro order by id asc";
     $rows = fetchAll($sql);
     return $rows;
 }

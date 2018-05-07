@@ -59,14 +59,14 @@
     <div class="login_cont">
         <form action="loginAction.php" method="post">
         <ul class="login">
-            <li class="l_tit">管理员帐号</li>
+            <li class="l_tit">用户帐号</li>
             <li class="mb_10"><input type="text" name="username" id="username" class="login_input user_icon"></li>
             <li class="l_tit">密码</li>
             <li class="mb_10"><input type="password" name="password" id="password" class="login_input user_icon"></li>
             <!-- <li class="l_tit">验证码</li>
             <li class="mb_10"><input type="text" name="verify" id="verify" class="login_input user_icon"></li>
-            <li><img src="getVerify.php" alt="" /></li> -->
-            <li class="autoLogin"><input type="checkbox" id="a1" name="autoFlag" class="checked" value="1"><label for="a1">自动登陆</label></li>
+            <li><img src="getVerify.php" alt="" /></li> 
+            <li class="autoLogin"><input type="checkbox" id="a1" name="autoFlag" class="checked" value="1"><label for="a1">自动登陆</label></li>-->
             <li><input type="submit" value="登录" class="login_btn" /></li>
         </ul>
         </form>
